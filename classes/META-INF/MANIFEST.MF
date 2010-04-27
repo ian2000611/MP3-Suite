@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Ant-Version: Apache Ant 1.6.1
-Created-By: JavaZOOM
-Main-Class: javazoom.jlgui.player.amp.StandalonePlayer
-
