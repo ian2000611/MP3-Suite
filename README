@@ -1,0 +1,7 @@
+This project is in a very early incubations stage.  It's goal is to be a: 
+	100% native java application
+	Executable from a single jar with no external jars/libraries
+	MP3 tagging application with support for music id
+	MP3 organizer targeted at people using usb storage devices
+	MP3 player
+	MP3 jukebox suitable for auto dj-ing a party
