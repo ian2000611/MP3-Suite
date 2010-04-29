@@ -1,0 +1,78 @@
+<project name="MP3-Suite" default="dist" basedir=".">
+	<description>
+		simple example build file
+	</description>
+	<!-- set global properties for this build -->
+	<property name="src" location="src"/>
+	<property name="build" location="build"/>
+	<property name="doc" location="doc"/>
+	<property name="dist"  location="MP3-Suite.jar"/>
+	<property name="debug" value="on"/>
+	<property name="ant.build.javac.source" value="1.6"/>
+	<property name="ant.build.javac.target" value="1.6"/>
+	<path id="project.classpath.path">
+				<pathelement path="${classpath}"/>
+				<pathelement location="classes"/>
+				<pathelement location="${build}"/>
+				<fileset dir="lib">
+					<include name="**/*.jar"/>
+				</fileset>
+			</path>
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp/>
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build}"/>
+		<mkdir dir="${doc}"/>
+	</target>
+
+	<target name="compile" depends="init"
+		description="compile the source " >
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${build}" classpathref="project.classpath.path" debuglevel="lines,vars,source" debug="${debug}" includeAntRuntime="false" />
+		<copy todir="${build}">
+			<fileset dir="${src}">
+				<exclude name="**/*.java"/>
+				<exclude name="**/*~"/>
+				<exclude name="**/*.swp"/>
+				<exclude name="**/thumbs.db"/>
+			</fileset>
+			<fileset dir="localization">
+				<exclude name="**/*.java"/>
+				<exclude name="**/*~"/>
+				<exclude name="**/*.swp"/>
+				<exclude name="**/Thumbs.db"/>
+			</fileset>
+		</copy>
+
+		<javadoc sourcepath="${src}" destdir="${doc}" classpathref="project.classpath.path" access="private" Locale="en_US" link="http://java.sun.com/javase/6/docs/api/" linksource="yes" packagenames="*">
+			
+		</javadoc>
+	</target>
+
+	<target name="run" depends="compile">
+		<java classname="MP3Suite.Application" fork="true" dir="${build}" classpathref="project.classpath.path"/>
+	</target>
+
+	<target name="dist" depends="compile"
+		description="generate the distribution" >
+		<!-- Create the distribution directory -->
+
+
+		<!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+		<jar jarfile="${dist}">
+			<fileset dir="${build}"/>cd
+			<fileset dir="classes"/>
+		</jar>
+	</target>
+
+	<target name="clean"
+		description="clean up" >
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${build}"/>
+		<delete dir="${doc}"/>
+		<delete file="${dist}"/>
+	</target>
+</project>
+

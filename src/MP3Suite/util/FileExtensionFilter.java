@@ -1,4 +1,4 @@
-package util;
+package MP3Suite.util;
 
 import java.io.File;
 import javax.swing.filechooser.FileFilter;

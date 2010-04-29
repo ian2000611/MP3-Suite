@@ -1,4 +1,4 @@
-package util;
+package MP3Suite.util;
 import java.util.ResourceBundle;
 
 public class config {
