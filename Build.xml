@@ -45,14 +45,14 @@
 				<exclude name="**/Thumbs.db"/>
 			</fileset>
 		</copy>
-
-		<javadoc sourcepath="${src}" destdir="${doc}" classpathref="project.classpath.path" access="private" Locale="en_US" link="http://java.sun.com/javase/6/docs/api/" linksource="yes" packagenames="*">
-			
-		</javadoc>
 	</target>
 
 	<target name="run" depends="compile">
 		<java classname="MP3Suite.Application" fork="true" dir="${build}" classpathref="project.classpath.path"/>
+	</target>
+
+	<target name="doc" depends="compile" description="Generate the documentation">
+		<javadoc sourcepath="${src}" destdir="${doc}" classpathref="project.classpath.path" access="private" Locale="en_US" link="http://java.sun.com/javase/6/docs/api/" linksource="yes" packagenames="*"/>
 	</target>
 
 	<target name="dist" depends="compile"
@@ -61,8 +61,8 @@
 
 
 		<!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-		<jar jarfile="${dist}">
-			<fileset dir="${build}"/>cd
+		<jar jarfile="${dist}" manifest="${build}/META-INF/MANIFEST.MF">
+			<fileset dir="${build}"/>
 			<fileset dir="classes"/>
 		</jar>
 	</target>

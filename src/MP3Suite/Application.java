@@ -1,6 +1,6 @@
 package MP3Suite;
 
-import java.io.FileInputStream;
+import java.io.InputStream;
 
 import java.util.logging.Logger;
 import java.util.logging.LogManager;
@@ -9,7 +9,7 @@ import javax.swing.UIManager;
 public class Application {
 	static {
 		try {
-			FileInputStream is = new FileInputStream("logging.properties");
+			InputStream is = Application.class.getResourceAsStream("/logging.properties");
 			LogManager.getLogManager().readConfiguration(is);
 		} catch (Exception ex) {
 			ex.printStackTrace();
