@@ -1,2 +1,6 @@
-# for the javalayer mp3 decoder
+# Providers of sound conversion services
+org.kc7bfi.jflac.sound.spi.FlacFormatConvertionProvider
+davaguine.jmac.spi.tritonus.APEFormatConversionProvider
+org.xiph.speex.spi.SpeexFormatConvertionProvider
 javazoom.spi.mpeg.sampled.convert.MpegFormatConversionProvider
+javazoom.spi.vorbis.sampled.convert.VorbisFormatConversionProvider

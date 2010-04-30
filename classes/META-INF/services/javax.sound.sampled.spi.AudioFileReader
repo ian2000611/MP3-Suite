@@ -1,2 +1,6 @@
-#  for the javalayer mp3 decoder
+# Providers of sound file-reading services
+org.kc7bfi.jflac.sound.spi.FlacAudioFileReader
+davaguine.jmac.spi.tritonus.APEAudioFileReader
+org.xiph.speex.spi.SpeexAudioFileReader
 javazoom.spi.mpeg.sampled.file.MpegAudioFileReader
+javazoom.spi.vorbis.sampled.file.VorbisAudioFileReader
