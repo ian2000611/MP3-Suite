@@ -16,9 +16,11 @@ public class FileExtensionGroupFilter extends FileFilter implements Iterable<Fil
 			addExtensions(extensions);
 		}
 		public void addExtensions(String extensions) {
-for (String extension : extensions.split(",")) {
-			addExtension(extension);
-		}
+			if (extensions != null) {
+				for (String extension : extensions.split(",")) {
+					addExtension(extension);
+				}
+			}
 		}
 		public void addExtension(String extension) {
 			for(String ext : filters.keySet()) {

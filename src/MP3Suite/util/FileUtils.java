@@ -5,9 +5,8 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileView;
-
 public class FileUtils {
-	private static final FileExtensionGroupFilter audioFileFilter = new FileExtensionGroupFilter(localization.getString("extensions.audiofiles.description"),config.getSetting("extensions.AUDIOFILES"));
+	private static final FileExtensionGroupFilter audioFileFilter = new FileExtensionGroupFilter(i18n.get("extensions.audiofiles.description"),Config.get("extensions.AUDIOFILES"));
 	
 	public static File[] openAudioFiles(Component parent) {
 		JFileChooser chooser = new JFileChooser();
@@ -16,10 +15,12 @@ public class FileUtils {
 		chooser.resetChoosableFileFilters();
 		chooser.setAcceptAllFileFilterUsed(true);
 		//chooser.addChoosableFileFilter(audioFileFilter);
-		for(FileFilter filter : audioFileFilter) {
-			chooser.addChoosableFileFilter(filter);
+		if (audioFileFilter != null) {
+			for(FileFilter filter : audioFileFilter) {
+				chooser.addChoosableFileFilter(filter);
+			}
+			chooser.setFileFilter(audioFileFilter);
 		}
-		chooser.setFileFilter(audioFileFilter);
 		chooser.setFileView(FileSystemView.getFileSystemView());
 		chooser.setMultiSelectionEnabled(true);
 		int returnVal = chooser.showOpenDialog(parent);

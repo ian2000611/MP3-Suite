@@ -36,12 +36,6 @@
 				<exclude name="**/*.java"/>
 				<exclude name="**/*~"/>
 				<exclude name="**/*.swp"/>
-				<exclude name="**/thumbs.db"/>
-			</fileset>
-			<fileset dir="localization">
-				<exclude name="**/*.java"/>
-				<exclude name="**/*~"/>
-				<exclude name="**/*.swp"/>
 				<exclude name="**/Thumbs.db"/>
 			</fileset>
 		</copy>
